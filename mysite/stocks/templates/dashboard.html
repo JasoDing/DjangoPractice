@@ -1,0 +1,44 @@
+{% extends 'frame.html' %}
+{% block title %} Dashboard {% endblock title %}
+{% block content %}   
+<center style="background-color:rgb(238, 238, 238);">
+    <br>
+    <h2 style="color:rgb(255, 81, 0)"> Dashboard </h2>
+    <p style="color:blue"> To view your saved tickers </p>
+    <br>
+</center>
+<dr>
+<div class="row">
+	<div class ="col-md">
+		<div class="card card-body">
+			<h3>Your Watchlist</h3>
+		</div>
+		<div class="card card-body">
+			<table class="table">
+				<tr>
+					<th>Stock Name</th>
+					<th>Symbol</th>
+					<th>Open Price</th>
+					<th>Close Price</th>
+					<th>Volume</th>
+				</tr>
+				{% for i in data %}
+					<tr>
+						<td>{{i.fname}}</td>
+						<td>{{i.ticker}}</td>
+						<td>{{i.open}}</td>
+						<td>{{i.close}}</td>
+						<td>{{i.volume}}</td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete' i.ticker %}">Remove</a></td>
+					</tr>
+				
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+{% endblock %}

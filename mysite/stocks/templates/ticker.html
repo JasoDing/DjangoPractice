@@ -1,0 +1,86 @@
+{% extends "frame.html" %}
+{% block title %} {{ meta.ticker }} {% endblock title %}
+{% block content %}
+<div class="container">
+        <br>
+        <h1>{{ meta.name }} ({{ meta.ticker }})</h1><br>
+
+        
+
+        <form method="post " action="#" >
+           {% csrf_token %}
+           <input type ="submit" value="Save to watchlist">
+           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <input id="watchlist" name="lst" type="text">
+              <button class="btn btn-primary" type="submit" name="save">Save to Dashboard</button>
+           </div>
+        </form>
+</div>
+<div class="container">
+        <h4 style="color:rgb(32, 32, 129)">Company Description: </h4> <br>
+        <p>{{meta.description}}</p> <br>
+        
+        <h4 style="color:rgb(32, 32, 129)"> Today's price data : </h4>
+        <table class="table">
+            <tr><td>Open: </td><td> {{price.open}}</td></tr>
+            <tr><td>High: </td><td>{{price.high}}</td></tr>
+            <tr><td>Low: </td><td>{{price.low}}</td></tr>
+            <tr><td>Close: </td><td>{{price.close}}</td></tr>
+            <tr><td>Volume: </td><td>{{price.volume}}</td></tr>
+        </table>
+        <br>
+        <h4 style="color:rgb(32, 32, 129)"> Stock View : </h4>
+        <br>
+        <div class="tradingview-widget-container" id="tvchart"></div>
+        <br>
+        <br>
+        <br>
+        <h4 style="color:rgb(32, 32, 129)"> Company News : </h4>
+        <br>
+        <script>
+          if (typeof(stockdio_events) == "undefined") {
+             stockdio_events = true;
+             var stockdio_eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+             var stockdio_eventer = window[stockdio_eventMethod];
+             var stockdio_messageEvent = stockdio_eventMethod == "attachEvent" ? "onmessage" : "message";
+             stockdio_eventer(stockdio_messageEvent, function (e) {
+                if (typeof(e.data) != "undefined" && typeof(e.data.method) != "undefined") {
+                   eval(e.data.method);
+                }
+             },false);
+          }
+       </script>
+       <iframe id='st_6a601d8f7c414233b179eebbff7a272c' frameBorder='0' scrolling='no' width='100%' height='100%' src='https://api.stockdio.com/visualization/financial/charts/v1/News?app-key=276A3D6DB659411FA5125F96487DB223&symbol={{meta.ticker}}&includeDescription=false&imageWidth=40&imageHeight=40&palette=Financial-Light&title=News&onload=st_6a601d8f7c414233b179eebbff7a272c'></iframe>
+       <br>
+       <br>
+       <br>
+</div>
+
+
+
+{% endblock %} 
+
+{% block js %}
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    
+    new TradingView.widget(
+    {
+    "width": 980,
+    "height": 610,
+    "symbol": "{{meta.ticker}}",
+    "interval": "D",
+    "timezone": "America/New_York",
+    "theme": "light",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "hide_top_toolbar": true,
+    "save_image": false,
+    "container_id": "tvchart"
+  }
+    );
+    </script>
+
+{% endblock %}

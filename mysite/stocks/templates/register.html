@@ -1,0 +1,22 @@
+{% extends 'frame.html' %}
+{% block title %} Register {% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}  
+    <center style="background-color:rgb(238, 238, 238);">
+        <br>
+        <h2 style="color:rgb(255, 81, 0)"> Account Register </h2>
+        <br>
+    </center>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <div class = "border-top pt-3">
+        <small class = "text-muted">
+            Already Have An Account? <a class="ml-2" href="#">Sign In</a>
+        </small>
+    </div>
+{% endblock %}

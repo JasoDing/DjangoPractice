@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+
+<div class="container text-center">
+    <h1> Stock Website Main Page </h1>
+    <br>
+    <h3> Enter the stock code here: </h3> 
+    <form action="/stocks/" method="post"> 
+        <!-- Django Call -->
+        {% csrf_token %}
+        <!-- Django output to here: -->>
+        {{ form }}
+        <input type="submit" value="submit">
+    </form>
+    <br><br>
+    <button onclick="location.href='account'" type="button">
+        account view</button>
+</div>
+{% endblock %}

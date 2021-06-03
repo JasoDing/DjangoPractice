@@ -1,0 +1,84 @@
+{% extends "frame.html" %}
+{% block title %} Contact {% endblock title %}
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+{% endif %}
+<!-- contact -->
+<center style="background-color:rgb(238, 238, 238);">
+    <br>
+    <h2 style="color:rgb(255, 81, 0)"> Contact Me </h2>
+    <p style="color:blue">Contact info for demo only.</p>
+    <br>
+</center>
+
+<div class="agileits_w3layouts_map">
+    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJS_OVUAzHw4kRxG-5lic3VaA&key=AIzaSyD8CJJTyulHtGWaggZ7HatscJCSOCByBmk"></iframe></div>
+
+<div class="w3_agileits_keep_touch">
+    <div class="container">
+        <div class="col-md-4 w3_agileits_keep_touch_left">
+            <div class="wthree_keep_touch">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            <p>(732) 391 6132</p>
+        </div>
+        <div class="col-md-4 w3_agileits_keep_touch_left">
+            <div class="wthree_keep_touch">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </div>
+            <p>Department of Electrical & Computer Engineering
+                Rutgers, The State University of New Jersey <span>94 Brett Road
+                    Piscataway, NJ 08854</span></p>
+        </div>
+        <div class="col-md-4 w3_agileits_keep_touch_left">
+            <div class="wthree_keep_touch">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+            </div>
+            <a href="mailto:zd75@scarletmail.rutgers.edu">Jason Ding: zd75@scarletmail.rutgers.edu</a>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<div class="contact">
+    <div class="container">
+        <h3>Contact Me Directy:</h3>
+        <div class="agile_contact_grids">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="col-md-6 wthree_contact_left_grid">
+                    <span class="input input--kuro">
+                        <input name="contact_name" class="input__field input__field--kuro" type="text" id="input-7" placeholder="" required="">
+                        <label class="input__label input__label--kuro" for="input-7">
+                            <span class="input__label-content input__label-content--kuro">Name</span>
+                        </label>
+                    </span>
+                    <span class="input input--kuro">
+                        <input name="contact_email" class="input__field input__field--kuro" type="email" id="input-8" placeholder="" required="">
+                        <label class="input__label input__label--kuro" for="input-8">
+                            <span class="input__label-content input__label-content--kuro">Email</span>
+                        </label>
+                    </span>
+                    <span class="input input--kuro">
+                        <input name="contact_subject"class="input__field input__field--kuro" type="text" id="input-9" placeholder="" required="">
+                        <label class="input__label input__label--kuro" for="input-9">
+                            <span class="input__label-content input__label-content--kuro">Subject</span>
+                        </label>
+                    </span>
+                </div>
+                <div class="col-md-6 wthree_contact_left_grid">
+                    <textarea name="Message" placeholder="Message..." required=""></textarea>
+                </div>
+                <div class="clearfix"> </div>
+                <input type="submit" value="contact_Submit">
+            </form>
+        </div>
+    </div>
+</div>
+ 
+<!-- //contact -->
+{% endblock %}

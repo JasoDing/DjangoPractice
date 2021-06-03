@@ -1,0 +1,27 @@
+{% extends 'frame.html' %}
+{% block title %} Delete? {% endblock title %}
+
+{% block content %}  
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+
+                <p>Are you sure to remove "{{stock.fname}}" from the Watchlist? </p>
+
+                <form action="{% url 'delete' stock  %}" method="POST">
+                    
+                    {% csrf_token %}
+                    <a class="btn btn-warning" href="{% url 'account' %}">Cancel</a>
+
+                    <input class="btn btn-danger" type="submit" name="Confirm">
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'frame.html' %}
+{% block title %} Dashboard {% endblock title %}
+{% block content %}   
+<center style="background-color:rgb(238, 238, 238);">
+    <br>
+    <h2 style="color:rgb(255, 81, 0)"> Suggestion Page </h2>
+    <p style="color:blue"> This page gives general buying and selling suggestions based on history average.</p>
+    <br>
+    <p>To use this site, please enter the Stock Symbol, the time period you want to evaluate, and the investment you would like to make.</p>
+    <p>This suggestion algorithm is based on the Long term and short term average. If you would like to know more, please contact me.</p>
+    <br>
+    <p>WARNING: Current known issues: cannot handle SPLIT </p>
+    <br>
+</center>
+<dr>
+
+
+
+    <div class="row">
+        <div class ="col-md">
+            <div class="card card-body">
+                <h3>Input</h3>
+            </div>
+            
+            <div class="card card-body">
+                <table class="table">
+                    <form method="post" action=" # " >
+                        {% csrf_token %}
+                    <tr>
+                        <th><label for="ticker">Ticker: </label>
+                            <input id="input_ticker" type="text" name="input_ticker"placeholder="Ticker symbol">
+                            </th>
+                        <th><label for="startdate">Start Date: </label>
+                            <input id="input_startdate" type="text" name="input_startdate"placeholder="yyyy-mm-dd">
+                            </th>
+                        <th><label for="enddate">End Date: </label>
+                            <input id="input_enddate" type="text" name="input_enddate"placeholder="yyyy-mm-dd">
+                            </th>
+                            <th><label for="invest amount"> Cash: </label>
+                                <input id="input_cash" type="text" name="input_cash"placeholder="In $ USD">
+                                </th>
+                    </tr>
+                    <input type="submit" value="OK">
+                    </form>
+                    
+                </table>
+            </div>
+        </div>    
+                        
+    </div>
+
+
+<dr></dr>
+<div class="row">
+	<div class ="col-md">
+		<div class="card card-body">
+			<h3>Result</h3>
+		</div>
+		<div class="card card-body">
+			<table class="table">
+				<tr>
+					<th>Date</th>
+					<th>Close Price</th>
+					<th>Total assets </th>
+					<th>Close Price</th>
+					<th>Hold</th>
+                    <th>Suggestion</th>
+				</tr>
+                <html>
+                <head><title>HTML Pandas Dataframe with CSS</title></head>
+                <body>
+                         {{res|safe}}
+                </body>
+                </html>
+                <!--{%if res%}
+				{% for dic in res %}
+					<tr>
+                        <td>{{i.Date}}</td>
+						<td>{{i.Close}}</td>
+						<td>{{i.cash}}</td>
+						<td>{{i.hold}}</td>
+						<td>{{i.signal}}</td>
+                        
+                    </tr>
+				
+				{% endfor %}
+                {% endif %}-->
+
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+{% endblock %}
