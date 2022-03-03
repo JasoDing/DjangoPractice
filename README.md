@@ -1,5 +1,5 @@
-#  Django Based Web Development Practice
-## **Stock Toolbox**
+# Stock Toolbox
+##  **Django Based Web Development Practice**
 
 Details please refer to the attached doc.
 
