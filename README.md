@@ -1,7 +1,9 @@
 # Stock Toolbox
 ##  **Django Based Web Development Practice**
 
-Details please refer to the attached doc.
+Stock Toolbox is a website aim to provide service to people who have little or none experience to the stock market but still want to participate in stock investing. The website as its name, is a simple tool for user to learn about the stock market. The website provides stock information lookup, a watchlist for user to track the stock they are interested, and a buying selling point suggestion system based on stock history performance. The onsite suggestion system is evaluated by using past years stock history performance. Based on the evaluation, investments followed the site’s suggestion system can be profitable
+
+For More Details please refer to the attached doc.
 
 ## Files
 -- mysite   &nbsp; (Main Django Folder contains different sub sites.)  
